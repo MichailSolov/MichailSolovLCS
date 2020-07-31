@@ -14,10 +14,15 @@ db = [["январь", "козерог", "19"],
 birthday = input("enter the num and enter the month (emp: num<space>month) ")
 
 for x in db:
-    if birthday.split(' ')[0] <= x[2] and birthday.split(' ')[1].lower() in x:
-        print(x[1])
-    elif birthday.split(' ')[1].lower() in x:
-        try:
-            print(db[db.index(x) + 1][1])
-        except IndexError:
-            print("козерог")
+    try:
+        if birthday.split(' ')[0] <= x[2] and birthday.split(' ')[1].lower() in x:
+            print(x[1])
+        elif birthday.split(' ')[1].lower() in x:
+            try:
+                print(db[db.index(x) + 1][1])
+            except IndexError:
+                print("козерог")
+    except IndexError:
+        print("probably you enter nothing")
+        break
+
