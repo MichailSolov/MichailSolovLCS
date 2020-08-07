@@ -7,6 +7,7 @@ def weight_list_creator(weight):
 
 class Animals:
     def __init__(self, nickname, environment, food, name, weight, voice):
+        self.nickname = nickname
         self.name = name
         self.environment = environment
         self.food = food
