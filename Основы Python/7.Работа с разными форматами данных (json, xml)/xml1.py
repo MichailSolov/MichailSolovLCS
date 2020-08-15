@@ -21,5 +21,4 @@ for i in str2:
     if len(i) >= 6:
         output.append(i)
 
-output = Counter(output)
-print(output)
+print(Counter(output).most_common(10))
