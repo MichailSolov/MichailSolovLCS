@@ -1,7 +1,6 @@
 cook_book_d = {}
 cook_book_i_a = []
 save_name = ''
-count_person = []
 
 
 def cook_bool_i(setup):
