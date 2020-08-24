@@ -43,6 +43,8 @@ def make_workspace_for_second(url):
 
     soup = BeautifulSoup(html, "html.parser")
     vacancies_info = soup.find_all('ul', class_='item-params-list')
+    if not vacancies_info:
+        vacancies_info = soup.find_all('div', class_='item-params item-params_type-one-colon')
     return vacancies_info
 
 
@@ -50,6 +52,8 @@ def second_page_parsing(url):
     results = []
     for i in make_workspace_for_second(url):
         info = i.find_all('li', class_='item-params-list-item')
+        if not info:
+            info = i.find_all('span', class_='')
         for j in info:
             results.append({
                 j.get_text(strip=True)
