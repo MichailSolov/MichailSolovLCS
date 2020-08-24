@@ -1,16 +1,23 @@
 from bs4 import BeautifulSoup
 import urllib.request
 from urllib.parse import quote
+from urllib.error import HTTPError
 
 
 def make_workspace():
-    ur_req = "Программист"
+    limit_m = int(input('enter the limit: '))
+    ur_req = input('enter the request: ')
     url = "https://www.avito.ru/tatarstan/rabota?q=" + quote(ur_req)
-    req = urllib.request.urlopen(url)
+    req = ''
+    try:
+        req = urllib.request.urlopen(url)
+    except HTTPError:
+        print('found nothing')
+        exit()
     html = req.read()
 
     soup = BeautifulSoup(html, "html.parser")
-    vacancies = soup.find_all('div', class_='snippet-horizontal')
+    vacancies = soup.find_all('div', class_='snippet-horizontal', limit=limit_m)
     return vacancies
 
 
@@ -69,4 +76,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
