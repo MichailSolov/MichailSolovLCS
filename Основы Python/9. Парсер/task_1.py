@@ -63,6 +63,10 @@ def get_results_file():
             f.write('\n\n\n')
 
 
-if __name__ == '__main__':
+def main():
     get_results_file()
-    exit()
+
+
+if __name__ == "__main__":
+    main()
+
