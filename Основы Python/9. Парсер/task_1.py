@@ -51,14 +51,18 @@ def second_page_parsing(url):
 
 
 def get_results_file():
-
     with open('txt.txt', 'w', encoding="utf-8") as f:
         for i in main_page_parsing():
-            f.write(f'title: {i["title"]}\nhref: {i["href"]}\ncity: {i["city"]}\n'
-                    f'kind: {i["kind"]}\nprice: {i["price"]}\nother info: {i["info"]}\n\n\n')
+            f.write(f'title: \t\t{i["title"]}\nhref: \t\t{i["href"]}\ncity: \t\t{i["city"]}\n'
+                    f'kind: \t\t{i["kind"]}\nprice: \t\t{i["price"]}')
+            f_name = 'other info:'
+            for j in i["info"]:
+                working_info = j.pop().split(':')
+                f.write('\n' + f_name + '\t' + str(working_info[0]) + ': ' + str(working_info[1]))
+                f_name = '\t\t'
+            f.write('\n\n\n')
 
 
 if __name__ == '__main__':
     get_results_file()
     exit()
-
